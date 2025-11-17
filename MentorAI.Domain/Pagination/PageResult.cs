@@ -1,4 +1,4 @@
-﻿namespace MonitoringMottu.Domain.Pagination;
+﻿namespace MentorAI.Domain.Pagination;
 
 public class PageResult<T>
 {

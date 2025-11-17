@@ -1,6 +1,6 @@
 ﻿using MentorAI.Domain.Entities;
 using MentorAI.Domain.Interfaces;
-using MonitoringMottu.Domain.Pagination;
+using MentorAI.Domain.Pagination;
 
 namespace MentorAI.Application.UseCases;
 

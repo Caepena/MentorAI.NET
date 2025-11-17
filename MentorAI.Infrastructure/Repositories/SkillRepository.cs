@@ -1,8 +1,8 @@
 ﻿using MentorAI.Domain.Entities;
 using MentorAI.Domain.Interfaces;
+using MentorAI.Domain.Pagination;
 using MentorAI.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
-using MonitoringMottu.Domain.Pagination;
 
 namespace MentorAI.Infrastructure.Repositories;
 
