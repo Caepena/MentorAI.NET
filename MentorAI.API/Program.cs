@@ -57,7 +57,6 @@ public class Program
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<ICourseRepository, CourseRepository>();
         builder.Services.AddScoped<ISkillRepository, SkillRepository>();
-        builder.Services.AddScoped<ISensorDataRepository, SensorDataRepository>();
 
         builder.Services.AddChecks(builder.Configuration);
 
