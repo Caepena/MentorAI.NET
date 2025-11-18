@@ -43,6 +43,11 @@ namespace MentorAI.Domain.Entities
             Provedor = provedor;
             CargaHoraria = cargaHoraria;
         }
+        
+        public void DefinirSkill(Guid skillId)
+        {
+            SkillId = skillId;
+        }
 
         public record CursoResponse(
             Guid Id,

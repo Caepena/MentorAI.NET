@@ -13,6 +13,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\MentorAI.Domain\MentorAI.Domain.csproj" />
+      <ProjectReference Include="..\MentorAI.Infrastructure\MentorAI.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

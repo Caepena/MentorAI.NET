@@ -16,15 +16,18 @@ namespace MentorAI.API.Controllers
         private readonly LinkGenerator _links;
         private readonly IUserRepository _usersRepository;
         private readonly IRepository<User> _userRepository;
+        private readonly IUserCourseUseCase _userCourseUseCase;
 
         public UserController(
             IRepository<User> userRepository,
             LinkGenerator links,
-            IUserRepository usersRepository)
+            IUserRepository usersRepository,
+            IUserCourseUseCase userCourseUseCase)
         {
             _userRepository = userRepository;
             _usersRepository = usersRepository;
             _links = links ?? throw new ArgumentException(nameof(links));
+            _userCourseUseCase = userCourseUseCase;
         }
 
         // GET: /User
@@ -204,6 +207,28 @@ namespace MentorAI.API.Controllers
             };
 
             return Ok(body);
+        }
+        
+        // POST: /User/{userId}/courses/{courseId}
+        [HttpPost("{userId:guid}/courses/{courseId:guid}")]
+        public async Task<IActionResult> MatricularEmCurso(
+            Guid userId,
+            Guid courseId,
+            CancellationToken ct)
+        {
+            try
+            {
+                await _userCourseUseCase.MatricularUsuarioEmCursoAsync(userId, courseId, ct);
+                return NoContent();
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, $"Erro ao matricular usuário no curso: {e.Message}");
+            }
         }
     }
 }

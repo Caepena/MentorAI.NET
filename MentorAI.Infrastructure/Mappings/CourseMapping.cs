@@ -32,11 +32,6 @@ namespace MentorAI.Infrastructure.Mappings
                 .IsRequired();
             
             builder
-                .HasOne(c => c.Skill)
-                .WithMany(s => s.Cursos)
-                .HasForeignKey(c => c.SkillId);
-            
-            builder
                 .HasMany(c => c.UsuariosMatriculados)
                 .WithMany(u => u.CursosAtivos)
                 .UsingEntity(j => j.ToTable("USUARIOS_CURSOS"));

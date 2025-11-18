@@ -1,16 +1,13 @@
 using System.Reflection;
 using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using MentorAI.API.Extensions;
+using MentorAI.Application.UseCases;
 using MentorAI.Domain.Interfaces;
+using MentorAI.Extensions;
 using MentorAI.Infrastructure.Context;
 using MentorAI.Infrastructure.Repositories;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 namespace MentorAI.API;
 
@@ -57,6 +54,8 @@ public class Program
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<ICourseRepository, CourseRepository>();
         builder.Services.AddScoped<ISkillRepository, SkillRepository>();
+        builder.Services.AddScoped<IUserCourseUseCase, UserCourseUseCase>();
+
 
         builder.Services.AddChecks(builder.Configuration);
 

@@ -40,4 +40,22 @@ public class CourseRepository : ICourseRepository
             PageSize = pageSize
         };
     }
+    
+    public async Task<Course?> GetByIdWithRelationsAsync(Guid id, CancellationToken ct = default)
+    {
+        return await _context.Courses
+            .AsNoTracking()
+            .Include(c => c.Skill)
+            .Include(c => c.UsuariosMatriculados)
+            .FirstOrDefaultAsync(c => c.Id == id, ct);
+    }
+
+    public async Task<List<Course>> GetAllWithRelationsAsync(CancellationToken ct = default)
+    {
+        return await _context.Courses
+            .AsNoTracking()
+            .Include(c => c.Skill)
+            .Include(c => c.UsuariosMatriculados)
+            .ToListAsync(ct);
+    }
 }

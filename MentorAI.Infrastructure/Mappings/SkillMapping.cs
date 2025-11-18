@@ -21,11 +21,7 @@ namespace MentorAI.Infrastructure.Mappings
 
             builder.Property(s => s.Descricao)
                 .HasMaxLength(500);
-
-            builder
-                .HasMany(s => s.Cursos)
-                .WithOne(c => c.Skill)
-                .HasForeignKey(c => c.SkillId);
+            
         }
     }
 }
