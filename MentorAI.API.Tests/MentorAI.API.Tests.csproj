@@ -23,4 +23,9 @@
         <Using Include="Xunit"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\MentorAI.API\MentorAI.API.csproj" />
+      <ProjectReference Include="..\MentorAI.Infrastructure\MentorAI.Infrastructure.csproj" />
+    </ItemGroup>
+
 </Project>
